@@ -18,6 +18,23 @@ public class Property {
         this.owner = null;
     }
 
+    // Checks if the property player landed on is available for purchase
+    public boolean isAvailable(){
+        return this.owner == null;
+    }
+
+    // Checks if the player has a monopoly over all properties with the same colour
+    public boolean isMonopoly(){
+        boolean monopoly = true;
+        for (Property property : this.owner.getOwnedProperties()){
+            if (property.colour != this.colour){
+                monopoly = false;
+                break;
+            }
+        }
+        return monopoly;
+    }
+
     public String getName() {
         return name;
     }
