@@ -5,22 +5,30 @@ import java.util.List;
 
 public class Players {
 
-    private String player1 = "Peter";
-    private String player2 = "Billy";
-    private String player3 = "Charlotte";
-    private String player4 = "Sweedal";
-
+    // Variable Declaration
     private String playerName;
     private Integer money;
-    private List<String> ownedProperties = new ArrayList<String>();
+    private List<String> ownedProperties;
 
     // Constructor - A player requires all the following information
     public Players(String playerName, Integer money, List<String> ownedProperties){
-
         this.playerName = playerName;
         this.money = money;
         this.ownedProperties = ownedProperties;
-
     }
 
+    // Get method for player names
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    // Get method for amount of money
+    public Integer getMoney() {
+        return money;
+    }
+
+    // Get method for all the owned properties for a player
+    public List<String> getOwnedProperties() {
+        return ownedProperties;
+    }
 }
