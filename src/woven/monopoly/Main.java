@@ -7,7 +7,5 @@ public class Main {
         System.out.println("Welcome to Woven Monopoly!");
         System.out.println();
 
-        new Game();
-
     }
 }
