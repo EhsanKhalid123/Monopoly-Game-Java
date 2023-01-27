@@ -22,11 +22,15 @@ public class Game {
         // load board from board.json and add the properties on the board to this variable
         properties = board.loadBoard();
 
+        // load dice rolled numbers from roll_1.json and add the numbers to this variable rolls which is a list
+        rolls = board.loadRolls();
+
         // Creates 4 players and adds them to a list called players
         players = new ArrayList<Player>();
         players.add(new Player("Peter"));
         players.add(new Player("Billy"));
         players.add(new Player("Charlotte"));
         players.add(new Player("Sweedal"));
+
     }
 }
