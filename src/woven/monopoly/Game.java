@@ -3,6 +3,8 @@ package woven.monopoly;
 public class Game {
 
     public Game(){
+        Board board = new Board();
+        board.createBoard("board.json");
         createPlayers();
     }
 
