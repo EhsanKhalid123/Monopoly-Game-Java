@@ -9,7 +9,7 @@ public class Property {
     private int rent;
     private Player owner;
 
-    private Property(String name, int price, String colour, String type, int rent){
+    public Property(String name, int price, String colour, String type, int rent){
         this.name = name;
         this.price = price;
         this.colour = colour;
