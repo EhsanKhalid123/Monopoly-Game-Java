@@ -13,7 +13,9 @@ public class Board {
             Scanner readBoard;
             readBoard = new Scanner(new File(boardFilePath));
 
-//            for (int i=0; i < readBoard.hasNextLine())
+            while (readBoard.hasNextLine()){
+
+            }
 
         } catch (Exception e){
             System.out.println("Error reading Board File");
