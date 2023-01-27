@@ -20,6 +20,14 @@ public class Player {
         this.ownedProperties = new ArrayList<Property>();
     }
 
+    public void buyProperty(Property property){
+        if (property.isAvailable() && this.money >= property.getPrice()){
+            this.money -= property.getPrice();
+            this.ownedProperties.add(property);
+            property.setOwner(this);
+        }
+    }
+
     // Get method for player names
     public String getName() {
         return name;
