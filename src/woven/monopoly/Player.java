@@ -44,6 +44,11 @@ public class Player {
         }
     }
 
+    // If player money is less than or equal to 0 then player is bankrupt
+    public boolean isBankrupt(){
+        return this.money <= 0;
+    }
+
     // Get method for player names
     public String getName() {
         return name;
