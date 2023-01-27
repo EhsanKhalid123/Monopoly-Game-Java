@@ -29,10 +29,17 @@ public class Board {
                 JSONObject jsonProp = (JSONObject) obj;
 
                 String name = (String) jsonProp.get("name");
-                int price = ((Long) jsonProp.get("price")).intValue();
-                String colour = (String) jsonProp.get("colour");
+                int price = 0;
+                if (jsonProp.get("price") != null) {
+                    price = ((Long) jsonProp.get("price")).intValue();
+                }
+                String colour = "";
+                if (jsonProp.get("colour") != null) {
+                    colour = (String) jsonProp.get("colour");
+                }
                 String type = (String) jsonProp.get("type");
-                int rent = ((Long) jsonProp.get("rent")).intValue();
+//                int rent = ((Long) jsonProp.get("rent")).intValue();
+                int rent = 3;
                 properties.add(new Property(name, price, colour, type, rent));
             }
         } catch (IOException | ParseException e) {

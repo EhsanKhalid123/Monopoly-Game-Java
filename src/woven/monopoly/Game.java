@@ -1,5 +1,6 @@
 package woven.monopoly;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -14,11 +15,18 @@ public class Game {
         // Create a new Board object
         Board board = new Board();
 
+        // Welcome Message
         System.out.println("Welcome to Woven Monopoly!");
         System.out.println();
 
         // load board from board.json and add the properties on the board to this variable
         properties = board.loadBoard();
 
+        // Creates 4 players and adds them to a list called players
+        players = new ArrayList<Player>();
+        players.add(new Player("Peter"));
+        players.add(new Player("Billy"));
+        players.add(new Player("Charlotte"));
+        players.add(new Player("Sweedal"));
     }
 }
