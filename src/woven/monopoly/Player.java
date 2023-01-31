@@ -53,11 +53,17 @@ public class Player {
         boolean monopoly;
         int count = 0;
 
-        for (int i=0; i < ownedProperties.size(); i++) {
-            if (property.getOwner() == ownedProperties.get(i).getOwner()) {
-                if (property.getColour().equals(ownedProperties.get(i).getColour())) {
-                    count++;
-                }
+//        for (int i=0; i < ownedProperties.size(); i++) {
+//            if (property.getOwner() == ownedProperties.get(i).getOwner()) {
+//                if (property.getColour().equals(ownedProperties.get(i).getColour())) {
+//                    count++;
+//                }
+//            }
+//        }
+
+        for (Property prop : ownedProperties){
+            if (prop.getColour().equals(property.getColour()) && property.getOwner() == prop.getOwner()){
+                count++;
             }
         }
 
