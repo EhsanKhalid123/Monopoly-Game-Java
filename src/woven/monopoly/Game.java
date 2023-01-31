@@ -43,6 +43,30 @@ public class Game {
         // This loop will continue until one of the players is bankrupt
         while (!isAnyPlayerBankrupt(players)) {
 
+            // Gets the current player
+            Player currentPlayer = players.get(currentPlayerIndex);
+
+            System.out.println("It's " + currentPlayer.getName() + "'s turn!");
+            System.out.println("Current Balance: $" + currentPlayer.getBalance());
+            System.out.println("Current Position: " + currentPlayer.getPosition());
+
+            System.out.println();
+
+            // Gets the dice roll number for the current turn then removes that number from the list to get the next one
+            int roll = rolls.get(0);
+            rolls.remove(0);
+            System.out.println(currentPlayer.getName() + " rolled number " + roll + " on the dice!");
+
+            System.out.println();
+
+            // Moves the player to the new position on the board
+            int newPosition = (currentPlayer.getPosition() + roll) % properties.size();
+            currentPlayer.setPosition(newPosition);
+            System.out.println(currentPlayer.getName() + " moved " + roll + " position(s) forward!");
+            System.out.println(currentPlayer.getName() + " moved to " + properties.get(newPosition).getName());
+
+            System.out.println();
+
         }
     }
 
