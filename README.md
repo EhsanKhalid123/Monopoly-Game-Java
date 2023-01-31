@@ -17,7 +17,7 @@
 ## Questions Answered:
 
 * Who would win each game?
-    - Using the Rolls 1 or Rolls 2 dice files each time Peter is the winner.
+    - Using the Rolls 1 Peter will win each game and using Rolls 2 dice files each time Billy will win the game.
 * How much money does everybody end up with?
     - Using the Rolls 1 file Peter ends with $48, Billy ends with $6, Charlotte ends with $-3 and Sweedal ends with $2.
     - Using the Rolls 2 file Peter ends with $4, Bill ends with $31, Charlotte ends with $18 and Sweedal ends with $-1.
