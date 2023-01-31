@@ -28,31 +28,39 @@ public class Property {
         return this.owner == null;
     }
 
+    // Gets the name of the property
     public String getName() {
         return name;
     }
 
+    // Gets the price of the property
     public Integer getPrice() {
         return price;
     }
 
+    // Gets the colour of the property
     public String getColour() {
         return colour;
     }
 
+    // Gets the type of the property
     public String getType() {
         return type;
     }
 
+    // Gets the rent of the property
     public int getRent() {
         return rent;
     }
 
+    // Gets the name of the property owner
     public Player getOwner() {
         return owner;
     }
 
+    // Sets the owner of the property
     public void setOwner(Player owner) {
         this.owner = owner;
     }
+
 }

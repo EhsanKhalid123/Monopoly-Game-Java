@@ -13,7 +13,7 @@ import org.json.simple.parser.ParseException;
 public class Board {
 
     // This method loads the Monopoly Board from the board.json file
-    public List<Property> loadBoard() {
+    public static List<Property> loadBoard() {
 
         // Creating a new instance of an object
         List<Property> properties = new ArrayList<>();
@@ -73,6 +73,18 @@ public class Board {
 
         // Returns the array list of all the rolled numbers
         return rolls;
+    }
+
+    public static int propertiesNoWithSameColour(String colour){
+        List<Property> properties = loadBoard();
+        int count = 0;
+        for (Property property : properties){
+            if (property.getColour().equals(colour)){
+                count++;
+            }
+        }
+        System.out.println(count);
+        return count;
     }
 
 }

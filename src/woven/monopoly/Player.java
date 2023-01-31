@@ -10,13 +10,12 @@ public class Player {
     // Variable Declaration
     private String name;
     private int balance;
-    private int  position;
-    private int  previousPosition;
+    private int position;
+    private int previousPosition;
     private List<Property> ownedProperties;
-    private Map<String, List<Property>> propertiesByColor;
 
     // Constructor - A player requires all the following information
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
         this.balance = 16;
         this.position = 0;
@@ -26,8 +25,8 @@ public class Player {
 
     // This allows player to buy property if it is available and then subtracts
     // the property amount from their balance and also the player now owns it
-    public void buyProperty(Property property){
-        if (property.isAvailable() && this.balance >= property.getPrice()){
+    public void buyProperty(Property property) {
+        if (property.isAvailable() && this.balance >= property.getPrice()) {
             this.balance -= property.getPrice();
             this.ownedProperties.add(property);
             property.setOwner(this);
@@ -37,10 +36,10 @@ public class Player {
     // If the property player lands on is not owned by them then they pay rent
     // and if the owner of the property owns all the same coloured property the
     // rent is doubled
-    public void payRent(Property property){
-        if (!property.isAvailable() && property.getOwner() != this){
+    public void payRent(Property property) {
+        if (!property.isAvailable() && property.getOwner() != this) {
             int rent = property.getRent();
-            if (property.getOwner().hasMonopoly()){
+            if (property.getOwner().hasMonopoly(property)) {
                 rent *= 2;
                 System.out.println("You have to pay double rent");
             }
@@ -50,13 +49,28 @@ public class Player {
     }
 
     // Checks if the player has a monopoly over all properties with the same colour
-    public boolean hasMonopoly(){
-//        boolean monopoly = true;
-        return false;
+    public boolean hasMonopoly(Property property) {
+        boolean monopoly;
+        int count = 0;
+
+        for (int i=0; i < ownedProperties.size(); i++) {
+            if (property.getOwner() == ownedProperties.get(i).getOwner()) {
+                if (property.getColour().equals(ownedProperties.get(i).getColour())) {
+                    count++;
+                }
+            }
+        }
+
+        int sameColour = Board.propertiesNoWithSameColour(property.getColour());
+        if (sameColour == count) {
+            monopoly = true;
+        } else
+            monopoly = false;
+        return monopoly;
     }
 
     // If player money is less than or equal to 0 then player is bankrupt
-    public boolean isBankrupt(){
+    public boolean isBankrupt() {
         return this.balance <= 0;
     }
 
