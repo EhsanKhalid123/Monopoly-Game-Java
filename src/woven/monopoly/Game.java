@@ -67,6 +67,25 @@ public class Game {
 
             System.out.println();
 
+            // If the player passes GO, they receive $1
+            if (newPosition == 0 && currentPlayer.getPosition() != 0) {
+                currentPlayer.setBalance(currentPlayer.getBalance() + 1);
+                System.out.println(currentPlayer.getName() + " received $1 for passing GO");
+                System.out.println("Current Balance: $" + currentPlayer.getBalance());
+            }
+
+            if (properties.get(newPosition).getType().equals("property")) {
+                if (properties.get(newPosition).getOwner() == null) {
+                    System.out.println(currentPlayer.getName() + " landed on an unowned property: " + properties.get(newPosition).getName());
+                    System.out.println(currentPlayer.getName() + " buys " + properties.get(newPosition).getName() + " for $" + properties.get(newPosition).getPrice());
+                    currentPlayer.buyProperty(properties.get(newPosition));
+                } else {
+                    System.out.println(currentPlayer.getName() + " lands on " + properties.get(newPosition).getName() + " and must pay $" + properties.get(newPosition).getRent() + " in rent to " + properties.get(newPosition).getOwner().getName());
+                    currentPlayer.payRent(properties.get(newPosition));
+                }
+                System.out.println(currentPlayer.getName() + " now has a Balance of: $" + currentPlayer.getBalance());
+            }
+
         }
     }
 
