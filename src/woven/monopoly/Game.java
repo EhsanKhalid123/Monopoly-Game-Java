@@ -93,12 +93,22 @@ public class Game {
         }
 
         // The game is over and the player who is not bankrupt is the winner
+        double maxBalance = Double.MIN_VALUE;
+        String winnerName = "";
+        System.out.println("Final Player Outcomes: ");
+        System.out.println();
+
         for (Player player : players) {
-            if (player.getBalance() >= 0) {
-                System.out.println(player.getName() + " is the winner with a balance of $" + player.getBalance());
-                break;
+
+            System.out.println("Name: " + player.getName() + ", Balance: $" + player.getBalance() + ", Position: " + player.getPosition());
+            if (player.getBalance() > maxBalance) {
+                maxBalance = player.getBalance();
+                winnerName = player.getName();
             }
         }
+
+        System.out.println();
+        System.out.println(winnerName + " is the winner with a balance of $" + maxBalance);
     }
 
     // Uses the isBankrupt method from players class to tell this method in Game class to return true or false if

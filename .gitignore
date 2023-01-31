@@ -6,7 +6,7 @@
 out/
 .idea/
 .idea_modules/
-*.iml
+#*.iml
 *.ipr
 *.iws
 
@@ -16,6 +16,7 @@ out/
 .mtj.tmp/
 *.class
 #*.jar
+gson-2.8.2.jar
 *.war
 *.ear
 *.nar
