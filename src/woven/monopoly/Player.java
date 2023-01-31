@@ -36,12 +36,20 @@ public class Player {
     public void payRent(Property property){
         if (!property.isAvailable() && property.getOwner() != this){
             int rent = property.getRent();
-            if (property.isMonopoly()){
+            if (property.getOwner().hasMonopoly()){
                 rent *= 2;
+                System.out.println("You have to pay double rent");
             }
             this.balance -= rent;
             property.getOwner().balance += rent;
         }
+    }
+
+    // Checks if the player has a monopoly over all properties with the same colour
+    public boolean hasMonopoly(){
+        boolean monopoly = true;
+
+        return monopoly;
     }
 
     // If player money is less than or equal to 0 then player is bankrupt
@@ -63,10 +71,12 @@ public class Player {
         return balance;
     }
 
+    // Get method for players position on board
     public int getPosition() {
         return position;
     }
 
+    // Set method for players position on board
     public void setPosition(int position) {
         this.position = position;
     }

@@ -16,7 +16,7 @@ public class Board {
     public List<Property> loadBoard() {
 
         // Creating a new instance of an object
-        List<Property> properties = new ArrayList<Property>();
+        List<Property> properties = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
         try {
@@ -40,8 +40,9 @@ public class Board {
                     colour = (String) jsonProp.get("colour");
                 }
                 String type = (String) jsonProp.get("type");
-                int rent = 3;
-                properties.add(new Property(name, price, colour, type, rent));
+
+                // Adds a Property to the ArrayList
+                properties.add(new Property(name, price, colour, type));
             }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
@@ -74,7 +75,15 @@ public class Board {
         return rolls;
     }
 
+    public static List<Property> getPropertiesByColour(String colour, List<Property> allProperties) {
+        List<Property> propertiesByColour = new ArrayList<>();
+//        List<Property> allProperties = loadBoard();
+        for (Property prop : allProperties) {
+            if (prop.getColour().equals(colour)) {
+                propertiesByColour.add(prop);
+            }
+        }
+        return propertiesByColour;
+    }
+
 }
-
-
-

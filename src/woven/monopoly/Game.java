@@ -104,6 +104,8 @@ public class Game {
         }
     }
 
+    // Uses the isBankrupt method from players class to tell this method in Game class to return true or false if
+    // a player is Bankrupt
     private static boolean isAnyPlayerBankrupt(List<Player> players) {
         for (Player player : players) {
             if (player.isBankrupt()) {
