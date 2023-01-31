@@ -61,6 +61,7 @@ public class Game {
 
             // Moves the player to the new position on the board
             int newPosition = (currentPlayer.getPosition() + roll) % properties.size();
+            currentPlayer.setPreviousPosition(currentPlayer.getPosition());
             currentPlayer.setPosition(newPosition);
             System.out.println(currentPlayer.getName() + " moved " + roll + " position(s) forward!");
             System.out.println(currentPlayer.getName() + " moved to " + properties.get(newPosition).getName());
@@ -68,10 +69,11 @@ public class Game {
             System.out.println();
 
             // If the player passes GO, they receive $1
-            if (newPosition == 0 && currentPlayer.getPosition() != 0) {
+            if (currentPlayer.getPosition() < currentPlayer.getPreviousPosition()) {
                 currentPlayer.setBalance(currentPlayer.getBalance() + 1);
                 System.out.println(currentPlayer.getName() + " received $1 for passing GO");
                 System.out.println("Current Balance: $" + currentPlayer.getBalance());
+                System.out.println();
             }
 
             if (properties.get(newPosition).getType().equals("property")) {

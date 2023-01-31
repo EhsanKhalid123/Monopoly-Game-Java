@@ -75,15 +75,4 @@ public class Board {
         return rolls;
     }
 
-    public static List<Property> getPropertiesByColour(String colour, List<Property> allProperties) {
-        List<Property> propertiesByColour = new ArrayList<>();
-//        List<Property> allProperties = loadBoard();
-        for (Property prop : allProperties) {
-            if (prop.getColour().equals(colour)) {
-                propertiesByColour.add(prop);
-            }
-        }
-        return propertiesByColour;
-    }
-
 }

@@ -2,6 +2,7 @@ package woven.monopoly;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 // Class to represent a player in the game
 public class Player {
@@ -10,13 +11,16 @@ public class Player {
     private String name;
     private int balance;
     private int  position;
+    private int  previousPosition;
     private List<Property> ownedProperties;
+    private Map<String, List<Property>> propertiesByColor;
 
     // Constructor - A player requires all the following information
     public Player(String name){
         this.name = name;
         this.balance = 16;
         this.position = 0;
+        this.previousPosition = 0;
         this.ownedProperties = new ArrayList<>();
     }
 
@@ -47,9 +51,8 @@ public class Player {
 
     // Checks if the player has a monopoly over all properties with the same colour
     public boolean hasMonopoly(){
-        boolean monopoly = true;
-
-        return monopoly;
+//        boolean monopoly = true;
+        return false;
     }
 
     // If player money is less than or equal to 0 then player is bankrupt
@@ -79,6 +82,14 @@ public class Player {
     // Set method for players position on board
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public int getPreviousPosition() {
+        return previousPosition;
+    }
+
+    public void setPreviousPosition(int previousPosition) {
+        this.previousPosition = previousPosition;
     }
 
     // Get method for all the owned properties for a player
