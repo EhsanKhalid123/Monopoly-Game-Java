@@ -2,7 +2,6 @@ package woven.monopoly;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 // Class to represent a player in the game
 public class Player {
@@ -33,16 +32,19 @@ public class Player {
         }
     }
 
-    // If the property player lands on is not owned by them then they pay rent
-    // and if the owner of the property owns all the same coloured property the
-    // rent is doubled
-    public void payRent(Property property) {
+    // If the property player lands on is not owned by them then they pay rent and if the owner of the
+    // property owns all the same coloured property the rent is doubled
+    public void payRent(Property property, String currentPlayerName) {
         if (!property.isAvailable() && property.getOwner() != this) {
             int rent = property.getRent();
             if (property.getOwner().hasMonopoly(property)) {
                 rent *= 2;
-                System.out.println("You have to pay double rent");
+                System.out.println("Since the owner owns all property of the same colour, You have to pay double rent");
             }
+
+            System.out.println(currentPlayerName + " lands on " + property.getName() + " and must pay $" + rent + " in rent to " + property.getOwner().getName());
+            System.out.println();
+
             this.balance -= rent;
             property.getOwner().balance += rent;
         }
@@ -53,25 +55,22 @@ public class Player {
         boolean monopoly;
         int count = 0;
 
-//        for (int i=0; i < ownedProperties.size(); i++) {
-//            if (property.getOwner() == ownedProperties.get(i).getOwner()) {
-//                if (property.getColour().equals(ownedProperties.get(i).getColour())) {
-//                    count++;
-//                }
-//            }
-//        }
-
-        for (Property prop : ownedProperties){
-            if (prop.getColour().equals(property.getColour()) && property.getOwner() == prop.getOwner()){
+        // Counts to see how many properties does the owner of landed property have that has the same colour
+        for (Property prop : ownedProperties) {
+            if (prop.getColour().equals(property.getColour()) && property.getOwner() == prop.getOwner()) {
                 count++;
             }
         }
 
+        // Checks how many properties overall have the colour of landed property
         int sameColour = Board.propertiesNoWithSameColour(property.getColour());
+
+        // Compares number of properties of same colour with the properties owned of same colour, if matched then monopoly is true
         if (sameColour == count) {
             monopoly = true;
         } else
             monopoly = false;
+
         return monopoly;
     }
 

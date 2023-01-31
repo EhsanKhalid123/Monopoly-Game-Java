@@ -1,7 +1,5 @@
 package woven.monopoly;
 
-import java.util.List;
-
 // Class to represent a property in the game
 public class Property {
 
@@ -14,7 +12,7 @@ public class Property {
     private Player owner;
 
     // Constructor - A Property requires all the following information
-    public Property(String name, int price, String colour, String type){
+    public Property(String name, int price, String colour, String type) {
         this.name = name;
         this.price = price;
         this.colour = colour;
@@ -24,7 +22,7 @@ public class Property {
     }
 
     // Checks if the property player landed on is available for purchase
-    public boolean isAvailable(){
+    public boolean isAvailable() {
         return this.owner == null;
     }
 

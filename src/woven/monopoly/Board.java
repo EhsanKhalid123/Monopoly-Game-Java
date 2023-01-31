@@ -75,15 +75,16 @@ public class Board {
         return rolls;
     }
 
-    public static int propertiesNoWithSameColour(String colour){
+    // Method to find how many total properties exist with colour sent through the parameter and returns the number
+    public static int propertiesNoWithSameColour(String colour) {
         List<Property> properties = loadBoard();
         int count = 0;
-        for (Property property : properties){
-            if (property.getColour().equals(colour)){
+        for (Property property : properties) {
+            if (property.getColour().equals(colour)) {
                 count++;
             }
         }
-        System.out.println(count);
+
         return count;
     }
 

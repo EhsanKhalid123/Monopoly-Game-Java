@@ -10,7 +10,7 @@ public class Game {
     static List<Integer> rolls;
     static int currentPlayerIndex;
 
-    public void startGame() {
+    public void startGame(String diceRollFilePath) {
 
         // Create a new Board object
         Board board = new Board();
@@ -23,7 +23,7 @@ public class Game {
         properties = board.loadBoard();
 
         // load dice rolled numbers from roll_1.json and add the numbers to this variable rolls which is a list
-        rolls = board.loadRolls("rolls_1.json");
+        rolls = board.loadRolls(diceRollFilePath);
 
         // Creates 4 players and adds them to a list called players
         players = new ArrayList<>();
@@ -31,11 +31,6 @@ public class Game {
         players.add(new Player("Billy"));
         players.add(new Player("Charlotte"));
         players.add(new Player("Sweedal"));
-
-//        // Sets the initial balance for each player
-//        for (Player player : players) {
-//            player.setBalance(16);
-//        }
 
         // currentPlayerIndex is used to keep track of the current player's turn
         currentPlayerIndex = 0;
@@ -76,14 +71,14 @@ public class Game {
                 System.out.println();
             }
 
+            // Buys a property if it has no owner otherwise rent is paid to the owner
             if (properties.get(newPosition).getType().equals("property")) {
                 if (properties.get(newPosition).getOwner() == null) {
                     System.out.println(currentPlayer.getName() + " landed on an unowned property: " + properties.get(newPosition).getName());
                     System.out.println(currentPlayer.getName() + " buys " + properties.get(newPosition).getName() + " for $" + properties.get(newPosition).getPrice());
                     currentPlayer.buyProperty(properties.get(newPosition));
                 } else {
-                    System.out.println(currentPlayer.getName() + " lands on " + properties.get(newPosition).getName() + " and must pay $" + properties.get(newPosition).getRent() + " in rent to " + properties.get(newPosition).getOwner().getName());
-                    currentPlayer.payRent(properties.get(newPosition));
+                    currentPlayer.payRent(properties.get(newPosition), currentPlayer.getName());
                 }
                 System.out.println(currentPlayer.getName() + " now has a Balance of: $" + currentPlayer.getBalance());
             }
