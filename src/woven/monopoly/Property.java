@@ -1,7 +1,9 @@
 package woven.monopoly;
 
+// Class to represent a property in the game
 public class Property {
 
+    // Variable Declaration
     private String name;
     private int price;
     private String colour;
@@ -9,6 +11,7 @@ public class Property {
     private int rent;
     private Player owner;
 
+    // Constructor - A Property requires all the following information
     public Property(String name, int price, String colour, String type, int rent){
         this.name = name;
         this.price = price;

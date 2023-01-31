@@ -8,23 +8,23 @@ public class Player {
 
     // Variable Declaration
     private String name;
-    private int money;
+    private int balance;
     private int  position;
     private List<Property> ownedProperties;
 
     // Constructor - A player requires all the following information
     public Player(String name){
         this.name = name;
-        this.money = 16;
+        this.balance = 16;
         this.position = 0;
-        this.ownedProperties = new ArrayList<Property>();
+        this.ownedProperties = new ArrayList<>();
     }
 
     // This allows player to buy property if it is available and then subtracts
     // the property amount from their balance and also the player now owns it
     public void buyProperty(Property property){
-        if (property.isAvailable() && this.money >= property.getPrice()){
-            this.money -= property.getPrice();
+        if (property.isAvailable() && this.balance >= property.getPrice()){
+            this.balance -= property.getPrice();
             this.ownedProperties.add(property);
             property.setOwner(this);
         }
@@ -39,14 +39,14 @@ public class Player {
             if (property.isMonopoly()){
                 rent *= 2;
             }
-            this.money -= rent;
-            property.getOwner().money += rent;
+            this.balance -= rent;
+            property.getOwner().balance += rent;
         }
     }
 
     // If player money is less than or equal to 0 then player is bankrupt
     public boolean isBankrupt(){
-        return this.money <= 0;
+        return this.balance <= 0;
     }
 
     // Get method for player names
@@ -54,9 +54,21 @@ public class Player {
         return name;
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     // Get method for amount of money
-    public Integer getMoney() {
-        return money;
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     // Get method for all the owned properties for a player

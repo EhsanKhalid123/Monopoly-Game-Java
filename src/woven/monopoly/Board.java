@@ -51,15 +51,15 @@ public class Board {
         return properties;
     }
 
-
-    public static List<Integer> loadRolls() {
+    // This method loads the Dice rolled numbers from the specified rolls.json files
+    public static List<Integer> loadRolls(String diceRollFilePath) {
         List<Integer> rolls = new ArrayList<>();
         JSONParser parser = new JSONParser();
 
         // Reads the JSON file and then uses the parser to parse it and assigns
         // it to jsonRolls and casts is as an JSON Array
         try {
-            Object obj = parser.parse(new FileReader("rolls_1.json"));
+            Object obj = parser.parse(new FileReader(diceRollFilePath));
             JSONArray jsonRolls = (JSONArray) obj;
 
             // Loops through the parsed integers jsonRolls and adds each integer to the rolls list
@@ -70,6 +70,7 @@ public class Board {
             e.printStackTrace();
         }
 
+        // Returns the array list of all the rolled numbers
         return rolls;
     }
 

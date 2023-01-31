@@ -23,14 +23,35 @@ public class Game {
         properties = board.loadBoard();
 
         // load dice rolled numbers from roll_1.json and add the numbers to this variable rolls which is a list
-        rolls = board.loadRolls();
+        rolls = board.loadRolls("rolls_1.json");
 
         // Creates 4 players and adds them to a list called players
-        players = new ArrayList<Player>();
+        players = new ArrayList<>();
         players.add(new Player("Peter"));
         players.add(new Player("Billy"));
         players.add(new Player("Charlotte"));
         players.add(new Player("Sweedal"));
 
+//        // Sets the initial balance for each player
+//        for (Player player : players) {
+//            player.setBalance(16);
+//        }
+
+        // currentPlayerIndex is used to keep track of the current player's turn
+        currentPlayerIndex = 0;
+
+        // This loop will continue until one of the players is bankrupt
+        while (!isAnyPlayerBankrupt(players)) {
+
+        }
+    }
+
+    private static boolean isAnyPlayerBankrupt(List<Player> players) {
+        for (Player player : players) {
+            if (player.isBankrupt()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
