@@ -86,6 +86,21 @@ public class Game {
                 System.out.println(currentPlayer.getName() + " now has a Balance of: $" + currentPlayer.getBalance());
             }
 
+            // Increase the current player index and wrap around if necessary
+            currentPlayerIndex++;
+            if (currentPlayerIndex >= players.size()) {
+                currentPlayerIndex = 0;
+            }
+
+            System.out.println();
+        }
+
+        // The game is over and the player who is not bankrupt is the winner
+        for (Player player : players) {
+            if (player.getBalance() >= 0) {
+                System.out.println(player.getName() + " is the winner with a balance of $" + player.getBalance());
+                break;
+            }
         }
     }
 
